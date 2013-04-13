@@ -12,32 +12,32 @@ if(isset($read_access) && $read_access) {
 	return;
 }
 
-$file_include[] = "seg_basic_include.css";
-$file_output[] = "../seg_basic.css";
+$file_include[] = "../seg_basic_include.css";
+$file_output[] = "../../seg_basic.css";
 
-$file_include[] = "seg_mobile_light_include.css";
-$file_output[] = "../seg_mobile_light.css";
+$file_include[] = "../seg_mobile_light_include.css";
+$file_output[] = "../../seg_mobile_light.css";
 
-$file_include[] = "seg_mobile_include.css";
-$file_output[] = "../seg_mobile.css";
+$file_include[] = "../seg_mobile_include.css";
+$file_output[] = "../../seg_mobile.css";
 
-$file_include[] = "seg_mobile_touch_include.css";
-$file_output[] = "../seg_mobile_touch.css";
+$file_include[] = "../seg_mobile_touch_include.css";
+$file_output[] = "../../seg_mobile_touch.css";
 
-$file_include[] = "seg_tablet_include.css";
-$file_output[] = "../seg_tablet.css";
+$file_include[] = "../seg_tablet_include.css";
+$file_output[] = "../../seg_tablet.css";
 
-$file_include[] = "../lib/seg_desktop_include.css";
-$file_output[] = "../seg_desktop.css";
+$file_include[] = "../seg_desktop_include.css";
+$file_output[] = "../../seg_desktop.css";
 
-$file_include[] = "../lib/seg_desktop_ie_include.css";
-$file_output[] = "../seg_desktop_ie.css";
+$file_include[] = "../seg_desktop_ie_include.css";
+$file_output[] = "../../seg_desktop_ie.css";
 
-$file_include[] = "../lib/seg_desktop_light_include.css";
-$file_output[] = "../seg_desktop_light.css";
+$file_include[] = "../seg_desktop_light_include.css";
+$file_output[] = "../../seg_desktop_light.css";
 
-$file_include[] = "../lib/seg_tv_include.css";
-$file_output[] = "../seg_tv.css";
+$file_include[] = "../seg_tv_include.css";
+$file_output[] = "../../seg_tv.css";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
