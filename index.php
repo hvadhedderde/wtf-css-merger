@@ -1,5 +1,7 @@
 <?php
-// dearapi-resources
+// css-merger for WhatTheFramework css segments
+// copyright 2013 Martin Kaestel Nielsen, think.dk and hvadhedderde under MIT-License
+// http://whattheframework.org
 
 error_reporting(E_ALL);
 
