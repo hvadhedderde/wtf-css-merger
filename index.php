@@ -14,36 +14,48 @@ if(isset($read_access) && $read_access) {
 	return;
 }
 
+// merge-path info can come from Apache conf or $_GET
+// merge-path info required from Apache conf
+if(isset($_SERVER["CSS_PATH"])) {
+	$path = $_SERVER["CSS_PATH"];
+}
+else {
+	print "No CSS_PATH?";
+	exit();
+}
+
+
 // INCLUDE LICENSE TEXT???
-$license_include = "../license.txt";
+$license = $path."/lib/license.txt";
 
 
-$file_include[] = "../seg_basic_include.css";
-$file_output[] = "../../seg_basic.css";
 
-$file_include[] = "../seg_mobile_light_include.css";
-$file_output[] = "../../seg_mobile_light.css";
+$file_include[] = $path."/lib/seg_basic_include.css";
+$file_output[] = $path."/seg_basic.css";
 
-$file_include[] = "../seg_mobile_include.css";
-$file_output[] = "../../seg_mobile.css";
+$file_include[] = $path."/lib/seg_mobile_light_include.css";
+$file_output[] = $path."/seg_mobile_light.css";
 
-$file_include[] = "../seg_mobile_touch_include.css";
-$file_output[] = "../../seg_mobile_touch.css";
+$file_include[] = $path."/lib/seg_mobile_include.css";
+$file_output[] = $path."/seg_mobile.css";
 
-$file_include[] = "../seg_tablet_include.css";
-$file_output[] = "../../seg_tablet.css";
+$file_include[] = $path."/lib/seg_mobile_touch_include.css";
+$file_output[] = $path."/seg_mobile_touch.css";
 
-$file_include[] = "../seg_desktop_include.css";
-$file_output[] = "../../seg_desktop.css";
+$file_include[] = $path."/lib/seg_tablet_include.css";
+$file_output[] = $path."/seg_tablet.css";
 
-$file_include[] = "../seg_desktop_ie_include.css";
-$file_output[] = "../../seg_desktop_ie.css";
+$file_include[] = $path."/lib/seg_desktop_include.css";
+$file_output[] = $path."/seg_desktop.css";
 
-$file_include[] = "../seg_desktop_light_include.css";
-$file_output[] = "../../seg_desktop_light.css";
+$file_include[] = $path."/lib/seg_desktop_ie_include.css";
+$file_output[] = $path."/seg_desktop_ie.css";
 
-$file_include[] = "../seg_tv_include.css";
-$file_output[] = "../../seg_tv.css";
+$file_include[] = $path."/lib/seg_desktop_light_include.css";
+$file_output[] = $path."/seg_desktop_light.css";
+
+$file_include[] = $path."/lib/seg_tv_include.css";
+$file_output[] = $path."/seg_tv.css";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -106,14 +118,18 @@ foreach($file_include as $index => $source) {
 
 			if(strpos($include, "/*") !== 0 && preg_match("/url\(([a-zA-Z0-9\.\/_\:\-\=\?]+)\)/i", $include, $matches)) {
 //				print "no c:$include<br>".$matches[1]."<br>";
+
+				// external include
 				if(preg_match("/http[s]?:\/\//i", $matches[1])) {
 					$filepath = $matches[1];
 				}
+				// local, absolute include
 				else if(strpos($matches[1], "/") === 0) {
 					$filepath = "http://".$_SERVER["HTTP_HOST"].$matches[1];
 				}
+				// relative include
 				else {
-					$filepath = "../".$matches[1];
+					$filepath = $path."/lib/".basename($matches[1]);
 				}
 //				print $filepath."<br>";
 				$files[] = $filepath;
@@ -128,7 +144,12 @@ foreach($file_include as $index => $source) {
 			exit;
 		}
 
-		fwrite($fp, "// css-merged @ ".date("Y-m-d h:i:s")."\n");
+		if(file_exists($license)) {
+			fwrite($fp, "/*\n");
+			fwrite($fp, file_get_contents($license)."\n");
+			fwrite($fp, "wtf-css-merged @ ".date("Y-m-d h:i:s")."\n");
+			fwrite($fp, "*/\n");
+		}
 
 
 		$include_size = 0;
