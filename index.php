@@ -1,5 +1,5 @@
 <?php
-// css-merger for WhatTheFramework css segments
+// wtf-css-merger for WhatTheFramework css segments
 // copyright 2013 Martin Kaestel Nielsen, think.dk and hvadhedderde under MIT-License
 // http://whattheframework.org
 
@@ -13,6 +13,10 @@ $access_item = false;
 if(isset($read_access) && $read_access) {
 	return;
 }
+
+// INCLUDE LICENSE TEXT???
+$license_include = "../license.txt";
+
 
 $file_include[] = "../seg_basic_include.css";
 $file_output[] = "../../seg_basic.css";
@@ -123,6 +127,8 @@ foreach($file_include as $index => $source) {
 			print "make files writable first";
 			exit;
 		}
+
+		fwrite($fp, "// css-merged @ ".date("Y-m-d h:i:s")."\n");
 
 
 		$include_size = 0;

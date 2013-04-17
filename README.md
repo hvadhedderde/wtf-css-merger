@@ -1,4 +1,4 @@
-css-merger
+wtf-css-merger
 ==========
 
 WhatTheFramework - CSS merger for device-segments
