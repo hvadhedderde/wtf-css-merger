@@ -38,31 +38,31 @@ $license = $path."/lib/license.txt";
 
 
 $file_include[] = $input_path."/lib/seg_basic_include.css";
-$file_output[] = $path."/seg_basic.css";
+$file_output[] = $path."/seg_basic.css.liquid";
 
 $file_include[] = $input_path."/lib/seg_mobile_light_include.css";
-$file_output[] = $path."/seg_mobile_light.css";
+$file_output[] = $path."/seg_mobile_light.css.liquid";
 
 $file_include[] = $input_path."/lib/seg_mobile_include.css";
-$file_output[] = $path."/seg_mobile.css";
+$file_output[] = $path."/seg_mobile.css.liquid";
 
 $file_include[] = $input_path."/lib/seg_mobile_touch_include.css";
-$file_output[] = $path."/seg_mobile_touch.css";
+$file_output[] = $path."/seg_mobile_touch.css.liquid";
 
 $file_include[] = $input_path."/lib/seg_tablet_include.css";
-$file_output[] = $path."/seg_tablet.css";
+$file_output[] = $path."/seg_tablet.css.liquid";
 
 $file_include[] = $input_path."/lib/seg_desktop_include.css";
-$file_output[] = $path."/seg_desktop.css";
+$file_output[] = $path."/seg_desktop.css.liquid";
 
 $file_include[] = $input_path."/lib/seg_desktop_ie_include.css";
-$file_output[] = $path."/seg_desktop_ie.css";
+$file_output[] = $path."/seg_desktop_ie.css.liquid";
 
 $file_include[] = $input_path."/lib/seg_desktop_light_include.css";
-$file_output[] = $path."/seg_desktop_light.css";
+$file_output[] = $path."/seg_desktop_light.css.liquid";
 
 $file_include[] = $input_path."/lib/seg_tv_include.css";
-$file_output[] = $path."/seg_tv.css";
+$file_output[] = $path."/seg_tv.css.liquid";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -214,6 +214,8 @@ foreach($file_include as $index => $source) {
 					*/
 
 					if(trim($minified)) {
+						$minified = preg_replace("/url\([\']?\/assets\/([a-zA-Z0-9_\-\.]+)[\']?\)/", "url({{ $1 | asset_url }})", $minified);
+
 						fwrite($fp, $minified);
 					}
 				}
