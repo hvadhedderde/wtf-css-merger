@@ -214,7 +214,7 @@ foreach($file_include as $index => $source) {
 					*/
 
 					if(trim($minified)) {
-						$minified = preg_replace("/url\([\']?\/assets\/([a-zA-Z0-9_\-\.]+)[\']?\)/", "url({{ $1 | asset_url }})", $minified);
+						$minified = preg_replace("/url\([\']?\/assets\/([a-zA-Z0-9_\-\.]+)[\']?\)/", "url({{ '$1' | asset_url }})", $minified);
 
 						fwrite($fp, $minified);
 					}
