@@ -24,37 +24,44 @@ else {
 	exit();
 }
 
+if(isset($_SERVER["CSS_INPUT_PATH"])) {
+	$input_path = $_SERVER["CSS_INPUT_PATH"];
+}
+else {
+	$input_path = $path;
+}
+
 
 // INCLUDE LICENSE TEXT???
 $license = $path."/lib/license.txt";
 
 
 
-$file_include[] = $path."/lib/seg_basic_include.css";
+$file_include[] = $input_path."/lib/seg_basic_include.css";
 $file_output[] = $path."/seg_basic.css";
 
-$file_include[] = $path."/lib/seg_mobile_light_include.css";
+$file_include[] = $input_path."/lib/seg_mobile_light_include.css";
 $file_output[] = $path."/seg_mobile_light.css";
 
-$file_include[] = $path."/lib/seg_mobile_include.css";
+$file_include[] = $input_path."/lib/seg_mobile_include.css";
 $file_output[] = $path."/seg_mobile.css";
 
-$file_include[] = $path."/lib/seg_mobile_touch_include.css";
+$file_include[] = $input_path."/lib/seg_mobile_touch_include.css";
 $file_output[] = $path."/seg_mobile_touch.css";
 
-$file_include[] = $path."/lib/seg_tablet_include.css";
+$file_include[] = $input_path."/lib/seg_tablet_include.css";
 $file_output[] = $path."/seg_tablet.css";
 
-$file_include[] = $path."/lib/seg_desktop_include.css";
+$file_include[] = $input_path."/lib/seg_desktop_include.css";
 $file_output[] = $path."/seg_desktop.css";
 
-$file_include[] = $path."/lib/seg_desktop_ie_include.css";
+$file_include[] = $input_path."/lib/seg_desktop_ie_include.css";
 $file_output[] = $path."/seg_desktop_ie.css";
 
-$file_include[] = $path."/lib/seg_desktop_light_include.css";
+$file_include[] = $input_path."/lib/seg_desktop_light_include.css";
 $file_output[] = $path."/seg_desktop_light.css";
 
-$file_include[] = $path."/lib/seg_tv_include.css";
+$file_include[] = $input_path."/lib/seg_tv_include.css";
 $file_output[] = $path."/seg_tv.css";
 
 ?>
