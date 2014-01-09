@@ -243,8 +243,8 @@ foreach($file_include as $index => $source) {
 	// is segment include available
 	if(!file_exists($source)) {
 
-		$_ .= $source . " -> " . $file_output[$index] . "<br />";
-		$_ .= "No include file<br /><br /><hr />";
+		print $source . " -> " . $file_output[$index] . "<br />";
+		print "No include file<br /><br /><hr />";
 
 	}
 	else {
