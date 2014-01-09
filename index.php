@@ -97,7 +97,6 @@ function parseFile($file) {
 	global $include_size;
 	global $path;
 
-
 	$file_size = strlen(file_get_contents($file));
 	$include_size += $file_size ? $file_size : 0;
 	$minisize = 0;
@@ -130,7 +129,7 @@ function parseFile($file) {
 
 				// replace one-liner comments, even if nested inside other string
 				if(!$comment_switch && preg_match("/\/\*[^$]+\*\//", $work_line)) {
-					$work_line = preg_replace("/\/\*[^$]+\*\//g", "", $work_line);
+					$work_line = preg_replace("/\/\*[^$]+\*\//", "", $work_line);
 				}
 
 				// found for /* comment start
