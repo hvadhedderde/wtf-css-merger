@@ -23,16 +23,27 @@ if(isset($_SERVER["CSS_PATH"])) {
 	$path = $_SERVER["CSS_PATH"];
 }
 else {
-	print "No CSS_PATH?";
-	exit();
+	// Attempt to guess path based on recommended structure (lib/build)
+	$guessed_path = $_SERVER["DOCUMENT_ROOT"].preg_replace("/lib\/build\/$/", "", $_SERVER["REQUEST_URI"]);
+	$verified_path = realpath($guessed_path);
+	if($guessed_path && $verified_path) {
+		$path = $verified_path;
+	}
+	else {
+		print "No CSS_PATH?";
+		exit();
+	}
 }
 
 if(isset($_SERVER["CSS_INPUT_PATH"])) {
 	$input_path = $_SERVER["CSS_INPUT_PATH"];
 }
 else {
-	$input_path = $path;
+	$input_path = $path."/lib";
 }
+
+print "INPUT PATH: $input_path<br />";
+print "OUTPUT PATH: $path<br />";
 
 
 // INCLUDE LICENSE TEXT???
@@ -40,31 +51,31 @@ $license = $path."/lib/license.txt";
 
 
 
-$file_include[] = $input_path."/lib/seg_basic_include.css";
+$file_include[] = $input_path."/seg_basic_include.css";
 $file_output[] = $path."/seg_basic.css";
 
-$file_include[] = $input_path."/lib/seg_mobile_light_include.css";
+$file_include[] = $input_path."/seg_mobile_light_include.css";
 $file_output[] = $path."/seg_mobile_light.css";
 
-$file_include[] = $input_path."/lib/seg_mobile_include.css";
+$file_include[] = $input_path."/seg_mobile_include.css";
 $file_output[] = $path."/seg_mobile.css";
 
-$file_include[] = $input_path."/lib/seg_mobile_touch_include.css";
+$file_include[] = $input_path."/seg_mobile_touch_include.css";
 $file_output[] = $path."/seg_mobile_touch.css";
 
-$file_include[] = $input_path."/lib/seg_tablet_include.css";
+$file_include[] = $input_path."/seg_tablet_include.css";
 $file_output[] = $path."/seg_tablet.css";
 
-$file_include[] = $input_path."/lib/seg_desktop_include.css";
+$file_include[] = $input_path."/seg_desktop_include.css";
 $file_output[] = $path."/seg_desktop.css";
 
-$file_include[] = $input_path."/lib/seg_desktop_ie_include.css";
+$file_include[] = $input_path."/seg_desktop_ie_include.css";
 $file_output[] = $path."/seg_desktop_ie.css";
 
-$file_include[] = $input_path."/lib/seg_desktop_light_include.css";
+$file_include[] = $input_path."/seg_desktop_light_include.css";
 $file_output[] = $path."/seg_desktop_light.css";
 
-$file_include[] = $input_path."/lib/seg_tv_include.css";
+$file_include[] = $input_path."/seg_tv_include.css";
 $file_output[] = $path."/seg_tv.css";
 
 ?>
