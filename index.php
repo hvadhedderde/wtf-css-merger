@@ -1,7 +1,7 @@
 <?php
-// wtf-css-merger for WhatTheFramework css segments
-// copyright 2013 Martin Kaestel Nielsen, think.dk and hvadhedderde under MIT-License
-// http://whattheframework.org
+// CSS merger for parentNode Detector segments
+// copyright 2013-2015 Martin Kaestel Nielsen, parentnode.dk under MIT-License
+// http://parentnode.dk
 
 
 
@@ -272,7 +272,7 @@ foreach($file_include as $index => $source) {
 		if(file_exists($license)) {
 			fwrite($fp, "/*\n");
 			fwrite($fp, file_get_contents($license)."\n");
-			fwrite($fp, "wtf-css-merged @ ".date("Y-m-d h:i:s")."\n");
+			fwrite($fp, "css-merged @ ".date("Y-m-d h:i:s")."\n");
 			fwrite($fp, "*/\n");
 		}
 
