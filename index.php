@@ -49,34 +49,16 @@ print "OUTPUT PATH: $path<br />";
 // INCLUDE LICENSE TEXT???
 $license = $path."/lib/license.txt";
 
+// find include sources
+$handle = opendir("$input_path");
+while(($file = readdir($handle)) !== false) {
+	if(preg_match("/seg_([a-zA-Z-_]+)_include.css$/", $file, $match)) {
 
-
-$file_include[] = $input_path."/seg_basic_include.css";
-$file_output[] = $path."/seg_basic.css";
-
-$file_include[] = $input_path."/seg_mobile_light_include.css";
-$file_output[] = $path."/seg_mobile_light.css";
-
-$file_include[] = $input_path."/seg_mobile_include.css";
-$file_output[] = $path."/seg_mobile.css";
-
-$file_include[] = $input_path."/seg_mobile_touch_include.css";
-$file_output[] = $path."/seg_mobile_touch.css";
-
-$file_include[] = $input_path."/seg_tablet_include.css";
-$file_output[] = $path."/seg_tablet.css";
-
-$file_include[] = $input_path."/seg_desktop_include.css";
-$file_output[] = $path."/seg_desktop.css";
-
-$file_include[] = $input_path."/seg_desktop_ie_include.css";
-$file_output[] = $path."/seg_desktop_ie.css";
-
-$file_include[] = $input_path."/seg_desktop_light_include.css";
-$file_output[] = $path."/seg_desktop_light.css";
-
-$file_include[] = $input_path."/seg_tv_include.css";
-$file_output[] = $path."/seg_tv.css";
+		$file_include[] = $input_path."/seg_".$match[1]."_include.css";
+		$file_output[] = $path."/seg_".$match[1].".css";
+		
+	}
+}
 
 ?>
 <!DOCTYPE html>
