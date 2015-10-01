@@ -52,7 +52,7 @@ $license = $path."/lib/license.txt";
 // find include sources
 $handle = opendir("$input_path");
 while(($file = readdir($handle)) !== false) {
-	if(preg_match("/seg_([a-zA-Z-_]+)_include.css$/", $file, $match)) {
+	if(preg_match("/^seg_([a-zA-Z-_]+)_include.css$/", $file, $match)) {
 
 		$file_include[] = $input_path."/seg_".$match[1]."_include.css";
 		$file_output[] = $path."/seg_".$match[1].".css";
