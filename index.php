@@ -254,7 +254,7 @@ foreach($file_include as $index => $source) {
 		if(file_exists($license)) {
 			fwrite($fp, "/*\n");
 			fwrite($fp, file_get_contents($license)."\n");
-			fwrite($fp, "css-merged @ ".date("Y-m-d h:i:s")."\n");
+			fwrite($fp, "css-merged @ ".date("Y-m-d H:i:s")."\n");
 			fwrite($fp, "*/\n");
 		}
 
